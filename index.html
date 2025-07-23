@@ -3,108 +3,151 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Music List - depanSYZ</title>
+  <title>DEPPP MUSIC</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: cyan;
+      font-family: 'Segoe UI', sans-serif;
       background: url('https://files.catbox.moe/d11c1y.jpeg') no-repeat center center fixed;
       background-size: cover;
-      backdrop-filter: blur(10px);
+      color: cyan;
+      backdrop-filter: blur(8px);
     }
 
     .container {
-      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 700px;
+      margin: auto;
       padding: 20px;
-      min-height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 15px;
+      box-shadow: 0 0 15px cyan;
     }
 
     h1, h2 {
       text-align: center;
+      text-shadow: 0 0 8px cyan;
       border-bottom: 1px solid cyan;
       padding-bottom: 5px;
-      text-shadow: 0 0 10px cyan;
+      margin-top: 30px;
     }
 
-    ul {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    li {
+    .lagu-item {
       margin: 15px 0;
+      background-color: rgba(0,255,255,0.1);
+      border: 1px solid cyan;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 0 10px #0ff;
     }
 
-    audio {
+    .lagu-item audio {
       width: 100%;
-      max-width: 400px;
-      display: block;
-      margin-top: 5px;
+      margin-top: 10px;
     }
 
-    .footer {
+    .download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 6px 12px;
+      background-color: cyan;
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 0 6px cyan;
+      transition: background 0.3s;
+    }
+
+    .download-btn:hover {
+      background-color: #00ffffcc;
+    }
+
+    .req {
       text-align: center;
-      margin-top: 40px;
-      color: #aaa;
+      margin-top: 30px;
+      padding: 10px;
+      background-color: rgba(255,255,255,0.1);
+      border: 1px dashed yellow;
+      border-radius: 10px;
+      color: yellow;
+      box-shadow: 0 0 5px yellow;
     }
 
     a {
-      color: cyan;
+      color: #0ff;
       text-decoration: none;
+      font-weight: bold;
     }
 
     a:hover {
       text-decoration: underline;
     }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ccc;
+    }
   </style>
-  <script>
-    // Supaya hanya satu audio yang bisa play
-    document.addEventListener("DOMContentLoaded", function () {
-      const audios = document.querySelectorAll("audio");
-      audios.forEach(audio => {
-        audio.addEventListener("play", () => {
-          audios.forEach(other => {
-            if (other !== audio) other.pause();
-          });
-        });
-      });
-    });
-  </script>
 </head>
 <body>
   <div class="container">
-    <h1>DAFTAR LAGU</h1>
-    <ul>
-      <li>
-        NEW JEANS — SUPER NATURAL
-        <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
-      </li>
-      <li>
-        BLACKPINK — JUMP
-        <audio controls src="https://files.catbox.moe/tweiyr.m4a"></audio>
-      </li>
-      <li>
-        BAHTERA CINTA
-        <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-      </li>
-      <li>
-        BAON CIKADAP HALAL
-        <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-      </li>
-    </ul>
+    <h1>🎵 DEPPP MUSIC LIST</h1>
+
+    <h2>LAGU NON-SAD</h2>
+
+    <div class="lagu-item">
+      <b>NEW JEANS – SUPER NATURAL</b>
+      <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/beeu8k.m4a" download>Download</a>
+    </div>
+
+    <div class="lagu-item">
+      <b>BLACKPINK – JUMP</b>
+      <audio controls src="https://files.catbox.moe/tweiyr.m4a"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/tweiyr.m4a" download>Download</a>
+    </div>
+
+    <div class="lagu-item">
+      <b>BAHTERA CINTA</b>
+      <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/eyw2iv.mp3" download>Download</a>
+    </div>
+
+    <div class="lagu-item">
+      <b>BAON CIKADAP HALAL</b>
+      <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/eyw2iv.mp3" download>Download</a>
+    </div>
 
     <h2>LAGU SAD</h2>
-    <ul>
-      <li><audio controls src="https://files.catbox.moe/r6qfl3.mp3"></audio></li>
-      <li><audio controls src="https://files.catbox.moe/swouhp.mp3"></audio></li>
-      <li><audio controls src="https://files.catbox.moe/ez93d3.mp3"></audio></li>
-    </ul>
 
-    <div class="footer">
-      Mau request lagu? <a href="https://t.me/depanSYZ" target="_blank">Klik di sini</a>
+    <div class="lagu-item">
+      <b>SAD SONG 1</b>
+      <audio controls src="https://files.catbox.moe/r6qfl3.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/r6qfl3.mp3" download>Download</a>
     </div>
+
+    <div class="lagu-item">
+      <b>SAD SONG 2</b>
+      <audio controls src="https://files.catbox.moe/swouhp.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/swouhp.mp3" download>Download</a>
+    </div>
+
+    <div class="lagu-item">
+      <b>SAD SONG 3</b>
+      <audio controls src="https://files.catbox.moe/ez93d3.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/ez93d3.mp3" download>Download</a>
+    </div>
+
+    <div class="req">
+      Mau request lagu? 👉 <a href="https://t.me/depanSYZ" target="_blank">Klik di sini</a>
+    </div>
+
+    <footer>
+      &copy; 2025 DEPPP MUSIC - depanSYZ
+    </footer>
   </div>
 </body>
 </html>
