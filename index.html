@@ -1,190 +1,203 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DEPPP MUSIC EFFECT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEPPP MUSIC LIST</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      background: url('https://files.catbox.moe/d11c1y.jpeg') no-repeat center center fixed;
-      background-size: cover;
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      color: cyan;
-    }
-
-    .container {
-      background-color: rgba(0, 0, 0, 0.7);
       padding: 20px;
-      max-width: 700px;
-      margin: auto;
-      margin-top: 30px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px cyan;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://files.catbox.moe/d11c1y.jpeg') center/cover no-repeat fixed;
+      backdrop-filter: blur(6px);
+      color: cyan;
     }
 
     h1 {
       text-align: center;
-      font-size: 2.2em;
-      color: #0ff;
+      color: cyan;
+      text-shadow: 0 0 10px cyan;
       margin-bottom: 30px;
-      text-shadow: 0 0 10px #0ff;
     }
 
-    .lagu-item {
-      margin-bottom: 25px;
-      padding: 15px;
-      background-color: rgba(0, 0, 0, 0.5);
-      border: 1px solid cyan;
+    .music-card {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid cyan;
       border-radius: 15px;
-      position: relative;
-      transition: all 0.3s ease;
+      padding: 15px;
+      margin-bottom: 25px;
+      color: cyan;
+      box-shadow: 0 0 10px cyan;
     }
 
-    .lagu-item.playing {
-      box-shadow: 0 0 20px #0ff;
-      border-color: #0ff;
-    }
-
-    .lagu-item b {
-      display: flex;
-      align-items: center;
+    .music-title {
       font-size: 1.2em;
       margin-bottom: 10px;
-      color: #00ffff;
+      font-weight: bold;
+      text-align: center;
     }
 
-    .spinner {
-      width: 18px;
-      height: 18px;
-      border: 2px solid #00ffff;
-      border-top: 2px solid transparent;
-      border-radius: 50%;
-      margin-right: 8px;
-      animation: spin 1s linear infinite;
-      display: none;
+    .audio-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
 
-    .lagu-item.playing .spinner {
-      display: inline-block;
+    .play-btn {
+      background: cyan;
+      color: black;
+      border: none;
+      padding: 10px 25px;
+      font-size: 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 10px cyan;
+      transition: transform 0.2s;
     }
 
-    @keyframes spin {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
+    .play-btn:hover {
+      transform: scale(1.1);
+      background: #00faff;
     }
 
-    audio {
-      width: 100%;
-      margin-bottom: 10px;
+    .track-time {
+      font-family: monospace;
+      font-size: 14px;
+    }
+
+    .progress {
+      width: 90%;
     }
 
     .download-btn {
+      margin-top: 8px;
       display: inline-block;
-      margin-top: 5px;
-      background-color: cyan;
-      color: black;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 8px 15px;
+      background: cyan;
+      color: #000;
       text-decoration: none;
-      font-weight: bold;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .footer a {
-      display: inline-block;
-      background-color: #0088cc;
-      color: white;
-      padding: 10px 20px;
       border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 0 10px #00bfff;
+      box-shadow: 0 0 5px cyan;
     }
 
-    .copyright {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #aaa;
+    .download-btn:hover {
+      background: #00eaff;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎵 DEPPP MUSIC LIST</h1>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>DJ SIAL – MAHALINI (Remix)</b>
-      <audio controls src="https://files.catbox.moe/8t8244.m4a"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/8t8244.m4a" download>Download</a>
+  <h1>🎵 DEPPP MUSIC LIST</h1>
+
+  <!-- Contoh 1 -->
+  <div class="music-card">
+    <div class="music-title">DJ SIAL – MAHALINI (Remix)</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio1')">▶️</button>
+      <span class="track-time" id="time1">00:00</span>
+      <input type="range" class="progress" id="progress1" value="0" max="100">
+      <a href="https://files.catbox.moe/8t8244.m4a" download class="download-btn">Download</a>
+      <audio id="audio1" src="https://files.catbox.moe/8t8244.m4a"></audio>
     </div>
+  </div>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>TAK INGIN USAI – KEISYA LEVRONKA</b>
-      <audio controls src="https://files.catbox.moe/kfmpsp.mp3"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/kfmpsp.mp3" download>Download</a>
+  <!-- Contoh 2 -->
+  <div class="music-card">
+    <div class="music-title">TAK INGIN USAI – KEISYA LEVRONKA</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio2')">▶️</button>
+      <span class="track-time" id="time2">00:00</span>
+      <input type="range" class="progress" id="progress2" value="0" max="100">
+      <a href="https://files.catbox.moe/kfmpsp.mp3" download class="download-btn">Download</a>
+      <audio id="audio2" src="https://files.catbox.moe/kfmpsp.mp3"></audio>
     </div>
+  </div>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>DITINGGAL PAS SAYANG SAYANG E</b>
-      <audio controls src="https://files.catbox.moe/0ld0yu.mp3"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/0ld0yu.mp3" download>Download</a>
+  <!-- Contoh 3 -->
+  <div class="music-card">
+    <div class="music-title">DITINGGAL PAS SAYANG SAYANG E</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio3')">▶️</button>
+      <span class="track-time" id="time3">00:00</span>
+      <input type="range" class="progress" id="progress3" value="0" max="100">
+      <a href="https://files.catbox.moe/0ld0yu.mp3" download class="download-btn">Download</a>
+      <audio id="audio3" src="https://files.catbox.moe/0ld0yu.mp3"></audio>
     </div>
+  </div>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>HATI HATI DI JALAN – TULUS</b>
-      <audio controls src="https://files.catbox.moe/1suqvn.m4a"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/1suqvn.m4a" download>Download</a>
+  <!-- Tambahkan musik lain sesuai kebutuhan -->
+  <!-- Contoh keempat -->
+  <div class="music-card">
+    <div class="music-title">HATI-HATI DIJALAN – TULUS</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio4')">▶️</button>
+      <span class="track-time" id="time4">00:00</span>
+      <input type="range" class="progress" id="progress4" value="0" max="100">
+      <a href="https://files.catbox.moe/1suqvn.m4a" download class="download-btn">Download</a>
+      <audio id="audio4" src="https://files.catbox.moe/1suqvn.m4a"></audio>
     </div>
+  </div>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>BIAR AKU YANG PERGI – ALDY MALDINI</b>
-      <audio controls src="https://files.catbox.moe/8n7aro.m4a"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/8n7aro.m4a" download>Download</a>
+  <div class="music-card">
+    <div class="music-title">BIAR AKU YANG PERGI – ALDY MALDINI</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio5')">▶️</button>
+      <span class="track-time" id="time5">00:00</span>
+      <input type="range" class="progress" id="progress5" value="0" max="100">
+      <a href="https://files.catbox.moe/8n7aro.m4a" download class="download-btn">Download</a>
+      <audio id="audio5" src="https://files.catbox.moe/8n7aro.m4a"></audio>
     </div>
+  </div>
 
-    <div class="lagu-item">
-      <b><span class="spinner"></span>RUMAH KE RUMAH – HINDIA</b>
-      <audio controls src="https://files.catbox.moe/ohyp6w.mp3"></audio>
-      <a class="download-btn" href="https://files.catbox.moe/ohyp6w.mp3" download>Download</a>
-    </div>
-
-    <div class="footer">
-      <a href="https://t.me/depanSYZ" target="_blank">📩 Request Lagu via Telegram</a>
-    </div>
-
-    <div class="copyright">
-      © depanXCV 2022–2025
+  <div class="music-card">
+    <div class="music-title">RUMAH KE RUMAH – HINDIA</div>
+    <div class="audio-wrapper">
+      <button class="play-btn" onclick="togglePlay(this, 'audio6')">▶️</button>
+      <span class="track-time" id="time6">00:00</span>
+      <input type="range" class="progress" id="progress6" value="0" max="100">
+      <a href="https://files.catbox.moe/ohyp6w.mp3" download class="download-btn">Download</a>
+      <audio id="audio6" src="https://files.catbox.moe/ohyp6w.mp3"></audio>
     </div>
   </div>
 
   <script>
-    const audios = document.querySelectorAll("audio");
-    const items = document.querySelectorAll(".lagu-item");
+    const audios = document.querySelectorAll('audio');
 
-    audios.forEach((audio, index) => {
-      audio.addEventListener("play", () => {
-        audios.forEach((el, i) => {
-          if (i !== index) el.pause();
-        });
-
-        items.forEach((item, i) => {
-          item.classList.toggle("playing", i === index);
-        });
+    function togglePlay(btn, id) {
+      audios.forEach(a => {
+        if (a.id !== id) {
+          a.pause();
+          a.currentTime = 0;
+          document.querySelector(`[onclick*="${a.id}"]`).textContent = '▶️';
+        }
       });
 
-      audio.addEventListener("pause", () => {
-        items[index].classList.remove("playing");
-      });
-    });
+      const audio = document.getElementById(id);
+      const time = document.getElementById('time' + id.slice(-1));
+      const progress = document.getElementById('progress' + id.slice(-1));
+
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = '⏸️';
+      } else {
+        audio.pause();
+        btn.textContent = '▶️';
+      }
+
+      audio.ontimeupdate = () => {
+        let mins = Math.floor(audio.currentTime / 60);
+        let secs = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+        time.textContent = `${mins}:${secs}`;
+        progress.value = (audio.currentTime / audio.duration) * 100;
+      };
+
+      progress.oninput = () => {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+      };
+    }
   </script>
+
 </body>
 </html>
