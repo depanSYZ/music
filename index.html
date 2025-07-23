@@ -2,23 +2,109 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Music List</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music List - depanSYZ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: cyan;
+      background: url('https://files.catbox.moe/d11c1y.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      backdrop-filter: blur(10px);
+    }
+
+    .container {
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    h1, h2 {
+      text-align: center;
+      border-bottom: 1px solid cyan;
+      padding-bottom: 5px;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      margin: 15px 0;
+    }
+
+    audio {
+      width: 100%;
+      max-width: 400px;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #aaa;
+    }
+
+    a {
+      color: cyan;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    // Supaya hanya satu audio yang bisa play
+    document.addEventListener("DOMContentLoaded", function () {
+      const audios = document.querySelectorAll("audio");
+      audios.forEach(audio => {
+        audio.addEventListener("play", () => {
+          audios.forEach(other => {
+            if (other !== audio) other.pause();
+          });
+        });
+      });
+    });
+  </script>
 </head>
 <body>
-  <h1>DAFTAR LAGU</h1>
-  <ul>
-    <li>NEW JEANS SUPER NATURAL <a href="https://files.catbox.moe/beeu8k.m4a">▶️ Putar</a></li>
-    <li>BAHTERA CINTA <a href="https://files.catbox.moe/eyw2iv.mp3">▶️ Putar</a></li>
-    <li>BAON CIKADAP HALAL <a href="https://files.catbox.moe/eyw2iv.mp3">▶️ Putar</a></li>
-  </ul>
+  <div class="container">
+    <h1>DAFTAR LAGU</h1>
+    <ul>
+      <li>
+        NEW JEANS — SUPER NATURAL
+        <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
+      </li>
+      <li>
+        BLACKPINK — JUMP
+        <audio controls src="https://files.catbox.moe/tweiyr.m4a"></audio>
+      </li>
+      <li>
+        BAHTERA CINTA
+        <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
+      </li>
+      <li>
+        BAON CIKADAP HALAL
+        <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
+      </li>
+    </ul>
 
-  <h2>LAGU SAD</h2>
-  <ul>
-    <li><a href="https://files.catbox.moe/r6qfl3.mp3">Lagu 1</a></li>
-    <li><a href="https://files.catbox.moe/swouhp.mp3">Lagu 2</a></li>
-    <li><a href="https://files.catbox.moe/ez93d3.mp3">Lagu 3</a></li>
-  </ul>
+    <h2>LAGU SAD</h2>
+    <ul>
+      <li><audio controls src="https://files.catbox.moe/r6qfl3.mp3"></audio></li>
+      <li><audio controls src="https://files.catbox.moe/swouhp.mp3"></audio></li>
+      <li><audio controls src="https://files.catbox.moe/ez93d3.mp3"></audio></li>
+    </ul>
 
-  <p>Mau request lagu? <a href="https://t.me/depanSYZ">Klik di sini</a></p>
+    <div class="footer">
+      Mau request lagu? <a href="https://t.me/depanSYZ" target="_blank">Klik di sini</a>
+    </div>
+  </div>
 </body>
 </html>
