@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DEPPP MUSIC LIST</title>
   <style>
     body {
       background-color: #000;
       color: #0ff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
       text-align: center;
+      padding: 20px;
     }
 
     h1 {
-      font-size: 2rem;
+      font-size: 2.5rem;
       text-shadow: 0 0 10px #0ff;
       margin-bottom: 30px;
     }
 
     .song {
-      margin: 20px auto;
       background: #111;
       border: 1px solid #0ff;
       border-radius: 10px;
+      margin: 20px auto;
       padding: 15px;
       max-width: 400px;
       box-shadow: 0 0 15px #0ff;
@@ -31,8 +31,8 @@
 
     .song-title {
       font-weight: bold;
-      margin-bottom: 10px;
       text-shadow: 0 0 5px cyan;
+      margin-bottom: 10px;
     }
 
     .btn {
@@ -45,15 +45,9 @@
       background-color: #0ff;
       color: #000;
       box-shadow: 0 0 10px #0ff;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #00dddd;
     }
 
     .telegram {
-      margin-top: 40px;
       display: inline-block;
       background-color: #0088cc;
       color: #fff;
@@ -62,80 +56,43 @@
       font-weight: bold;
       text-decoration: none;
       box-shadow: 0 0 15px #0088cc;
-      transition: 0.3s;
-    }
-
-    .telegram:hover {
-      background-color: #0074b6;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
-  <h1>DEPPP MUSIC LIST</h1>
+  <h1>DEPPP MUSIC LIST 🎶</h1>
 
-  <!-- Lagu 1 -->
   <div class="song">
     <div class="song-title">NEW JEANS - SUPER NATURAL</div>
-    <audio id="audio1" src="https://files.catbox.moe/beeu8k.m4a"></audio>
-    <button class="btn" onclick="playAudio('audio1')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio1')">Pause</button>
+    <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
   </div>
 
-  <!-- Lagu 2 -->
   <div class="song">
     <div class="song-title">BAHTERA CINTA</div>
-    <audio id="audio2" src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-    <button class="btn" onclick="playAudio('audio2')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio2')">Pause</button>
+    <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
   </div>
 
-  <!-- Lagu 3 -->
   <div class="song">
     <div class="song-title">BAON CIKADAP HALAL</div>
-    <audio id="audio3" src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-    <button class="btn" onclick="playAudio('audio3')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio3')">Pause</button>
+    <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
   </div>
 
-  <!-- Lagu 4 -->
   <div class="song">
     <div class="song-title">LAGU SAD 1</div>
-    <audio id="audio4" src="https://files.catbox.moe/r6qfl3.mp3"></audio>
-    <button class="btn" onclick="playAudio('audio4')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio4')">Pause</button>
+    <audio controls src="https://files.catbox.moe/r6qfl3.mp3"></audio>
   </div>
 
-  <!-- Lagu 5 -->
   <div class="song">
     <div class="song-title">LAGU SAD 2</div>
-    <audio id="audio5" src="https://files.catbox.moe/swouhp.mp3"></audio>
-    <button class="btn" onclick="playAudio('audio5')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio5')">Pause</button>
+    <audio controls src="https://files.catbox.moe/swouhp.mp3"></audio>
   </div>
 
-  <!-- Lagu 6 -->
   <div class="song">
     <div class="song-title">LAGU SAD 3</div>
-    <audio id="audio6" src="https://files.catbox.moe/ez93d3.mp3"></audio>
-    <button class="btn" onclick="playAudio('audio6')">Play</button>
-    <button class="btn" onclick="pauseAudio('audio6')">Pause</button>
+    <audio controls src="https://files.catbox.moe/ez93d3.mp3"></audio>
   </div>
 
-  <!-- Telegram Button -->
-  <a class="telegram" href="https://t.me/depanSYZ" target="_blank">Request Lagu? Klik Disini</a>
-
-  <script>
-    function playAudio(id) {
-      const allAudio = document.querySelectorAll("audio");
-      allAudio.forEach(a => {
-        if (a.id !== id) a.pause(); // Pause all except the one to play
-      });
-      document.getElementById(id).play();
-    }
-
-    function pauseAudio(id) {
-      document.getElementById(id).pause();
-    }
-  </script>
+  <a class="telegram" href="https://t.me/depanSYZ" target="_blank">Request Lagu? Klik Di Sini</a>
 </body>
 </html>
