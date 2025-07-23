@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>DEPPP MUSIC LIST</title>
+  <title>DEPPP MUSIC EFFECT</title>
   <style>
     body {
       margin: 0;
@@ -28,42 +28,69 @@
 
     h1 {
       text-align: center;
-      font-size: 2em;
-      margin-bottom: 20px;
+      font-size: 2.2em;
       color: #0ff;
+      margin-bottom: 30px;
+      text-shadow: 0 0 10px #0ff;
     }
 
     .lagu-item {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       padding: 15px;
       background-color: rgba(0, 0, 0, 0.5);
       border: 1px solid cyan;
       border-radius: 15px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .lagu-item.playing {
+      box-shadow: 0 0 20px #0ff;
+      border-color: #0ff;
     }
 
     .lagu-item b {
-      display: block;
-      font-size: 1.1em;
+      display: flex;
+      align-items: center;
+      font-size: 1.2em;
       margin-bottom: 10px;
+      color: #00ffff;
     }
 
-    .lagu-item audio {
+    .spinner {
+      width: 18px;
+      height: 18px;
+      border: 2px solid #00ffff;
+      border-top: 2px solid transparent;
+      border-radius: 50%;
+      margin-right: 8px;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+
+    .lagu-item.playing .spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    audio {
       width: 100%;
       margin-bottom: 10px;
     }
 
-    .lagu-item a.download-btn {
+    .download-btn {
       display: inline-block;
+      margin-top: 5px;
       background-color: cyan;
       color: black;
       padding: 6px 12px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-    }
-
-    .lagu-item a.download-btn:hover {
-      background-color: #00ffffcc;
     }
 
     .footer {
@@ -82,84 +109,82 @@
       box-shadow: 0 0 10px #00bfff;
     }
 
-    .footer a:hover {
-      background-color: #007ab8;
+    .copyright {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>DEPPP LIST LAGU</h1>
+    <h1>🎵 DEPPP MUSIC LIST</h1>
 
     <div class="lagu-item">
-      <b>NEW JEANS – SUPER NATURAL</b>
-      <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/beeu8k.m4a" download>Download</a>
+      <b><span class="spinner"></span>DJ SIAL – MAHALINI (Remix)</b>
+      <audio controls src="https://files.catbox.moe/8t8244.m4a"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/8t8244.m4a" download>Download</a>
     </div>
 
     <div class="lagu-item">
-      <b>BLACKPINK – JUMP</b>
-      <audio controls src="https://files.catbox.moe/tweiyr.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/tweiyr.m4a" download>Download</a>
+      <b><span class="spinner"></span>TAK INGIN USAI – KEISYA LEVRONKA</b>
+      <audio controls src="https://files.catbox.moe/kfmpsp.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/kfmpsp.mp3" download>Download</a>
     </div>
 
     <div class="lagu-item">
-      <b>BAHTERA CINTA</b>
-      <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/eyw2iv.mp3" download>Download</a>
+      <b><span class="spinner"></span>DITINGGAL PAS SAYANG SAYANG E</b>
+      <audio controls src="https://files.catbox.moe/0ld0yu.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/0ld0yu.mp3" download>Download</a>
     </div>
 
     <div class="lagu-item">
-      <b>BAON CIKADAP HALAL</b>
-      <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/eyw2iv.mp3" download>Download</a>
+      <b><span class="spinner"></span>HATI HATI DI JALAN – TULUS</b>
+      <audio controls src="https://files.catbox.moe/1suqvn.m4a"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/1suqvn.m4a" download>Download</a>
     </div>
 
     <div class="lagu-item">
-      <b>TAKE ME HOME</b>
-      <audio controls src="https://files.catbox.moe/ey41j1.mp3"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/ey41j1.mp3" download>Download</a>
+      <b><span class="spinner"></span>BIAR AKU YANG PERGI – ALDY MALDINI</b>
+      <audio controls src="https://files.catbox.moe/8n7aro.m4a"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/8n7aro.m4a" download>Download</a>
     </div>
 
     <div class="lagu-item">
-      <b>LAST NIGHT ON EARTH</b>
-      <audio controls src="https://files.catbox.moe/ylypc8.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/ylypc8.m4a" download>Download</a>
-    </div>
-
-    <div class="lagu-item">
-      <b>CHEAP THRILLS</b>
-      <audio controls src="https://files.catbox.moe/vce52l.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/vce52l.m4a" download>Download</a>
-    </div>
-
-    <div class="lagu-item">
-      <b>O TUAN – FEAST</b>
-      <audio controls src="https://files.catbox.moe/wlkn8t.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/wlkn8t.m4a" download>Download</a>
-    </div>
-
-    <div class="lagu-item">
-      <b>LILITH</b>
-      <audio controls src="https://files.catbox.moe/z4t1kz.m4a"></audio>
-      <p>📥 Download Lagu Ini:</p>
-      <a class="download-btn" href="https://files.catbox.moe/z4t1kz.m4a" download>Download</a>
+      <b><span class="spinner"></span>RUMAH KE RUMAH – HINDIA</b>
+      <audio controls src="https://files.catbox.moe/ohyp6w.mp3"></audio>
+      <a class="download-btn" href="https://files.catbox.moe/ohyp6w.mp3" download>Download</a>
     </div>
 
     <div class="footer">
-      <a href="https://t.me/depanSYZ" target="_blank">🚀 Request Lagu via Telegram</a>
+      <a href="https://t.me/depanSYZ" target="_blank">📩 Request Lagu via Telegram</a>
     </div>
-    <p style="text-align:center; color:#0ff; margin-top:30px; font-size: 0.9em;">
-  © depanXCV 2022–2025
-    </p>
+
+    <div class="copyright">
+      © depanXCV 2022–2025
+    </div>
   </div>
+
+  <script>
+    const audios = document.querySelectorAll("audio");
+    const items = document.querySelectorAll(".lagu-item");
+
+    audios.forEach((audio, index) => {
+      audio.addEventListener("play", () => {
+        audios.forEach((el, i) => {
+          if (i !== index) el.pause();
+        });
+
+        items.forEach((item, i) => {
+          item.classList.toggle("playing", i === index);
+        });
+      });
+
+      audio.addEventListener("pause", () => {
+        items[index].classList.remove("playing");
+      });
+    });
+  </script>
 </body>
 </html>
