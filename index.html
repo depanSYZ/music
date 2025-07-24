@@ -1,203 +1,144 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEPPP MUSIC LIST</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DEPPP STYLE MUSIC</title>
   <style>
     body {
+      background: url('https://files.catbox.moe/d11c1y.jpeg') center/cover fixed no-repeat;
+      font-family: 'Segoe UI', sans-serif;
+      color: cyan;
       margin: 0;
       padding: 20px;
-      font-family: 'Segoe UI', sans-serif;
-      background: url('https://files.catbox.moe/d11c1y.jpeg') center/cover no-repeat fixed;
-      backdrop-filter: blur(6px);
-      color: cyan;
-    }
-
-    h1 {
       text-align: center;
-      color: cyan;
-      text-shadow: 0 0 10px cyan;
-      margin-bottom: 30px;
     }
-
-    .music-card {
-      background: rgba(0, 0, 0, 0.7);
+    h1 {
+      text-shadow: 0 0 10px cyan;
+    }
+    .music-box {
+      background: rgba(0, 0, 0, 0.6);
       border: 2px solid cyan;
       border-radius: 15px;
       padding: 15px;
-      margin-bottom: 25px;
-      color: cyan;
+      margin: 20px auto;
+      max-width: 400px;
       box-shadow: 0 0 10px cyan;
     }
-
-    .music-title {
-      font-size: 1.2em;
-      margin-bottom: 10px;
+    .title {
       font-weight: bold;
-      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
     }
-
-    .audio-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
+    .controls {
+      margin: 10px 0;
     }
-
-    .play-btn {
+    .btn {
       background: cyan;
-      color: black;
       border: none;
-      padding: 10px 25px;
-      font-size: 18px;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 10px cyan;
-      transition: transform 0.2s;
-    }
-
-    .play-btn:hover {
-      transform: scale(1.1);
-      background: #00faff;
-    }
-
-    .track-time {
-      font-family: monospace;
-      font-size: 14px;
-    }
-
-    .progress {
-      width: 90%;
-    }
-
-    .download-btn {
-      margin-top: 8px;
-      display: inline-block;
-      padding: 8px 15px;
-      background: cyan;
-      color: #000;
-      text-decoration: none;
+      padding: 10px 15px;
+      margin: 5px;
+      color: black;
       border-radius: 10px;
-      box-shadow: 0 0 5px cyan;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .equalizer {
+      display: none;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .bar {
+      width: 4px;
+      height: 5px;
+      margin: 0 2px;
+      background: cyan;
+      animation: bounce 1s infinite ease-in-out;
+    }
+    .bar:nth-child(2) { animation-delay: 0.1s; }
+    .bar:nth-child(3) { animation-delay: 0.2s; }
+    .bar:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes bounce {
+      0%, 100% { height: 5px; }
+      50% { height: 20px; }
     }
 
-    .download-btn:hover {
-      background: #00eaff;
+    footer {
+      margin-top: 40px;
+      color: cyan;
+      text-shadow: 0 0 5px cyan;
     }
   </style>
 </head>
 <body>
+  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>
 
-  <h1>🎵 DEPPP MUSIC LIST</h1>
+  <div id="music-list"></div>
 
-  <!-- Contoh 1 -->
-  <div class="music-card">
-    <div class="music-title">DJ SIAL – MAHALINI (Remix)</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio1')">▶️</button>
-      <span class="track-time" id="time1">00:00</span>
-      <input type="range" class="progress" id="progress1" value="0" max="100">
-      <a href="https://files.catbox.moe/8t8244.m4a" download class="download-btn">Download</a>
-      <audio id="audio1" src="https://files.catbox.moe/8t8244.m4a"></audio>
-    </div>
-  </div>
-
-  <!-- Contoh 2 -->
-  <div class="music-card">
-    <div class="music-title">TAK INGIN USAI – KEISYA LEVRONKA</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio2')">▶️</button>
-      <span class="track-time" id="time2">00:00</span>
-      <input type="range" class="progress" id="progress2" value="0" max="100">
-      <a href="https://files.catbox.moe/kfmpsp.mp3" download class="download-btn">Download</a>
-      <audio id="audio2" src="https://files.catbox.moe/kfmpsp.mp3"></audio>
-    </div>
-  </div>
-
-  <!-- Contoh 3 -->
-  <div class="music-card">
-    <div class="music-title">DITINGGAL PAS SAYANG SAYANG E</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio3')">▶️</button>
-      <span class="track-time" id="time3">00:00</span>
-      <input type="range" class="progress" id="progress3" value="0" max="100">
-      <a href="https://files.catbox.moe/0ld0yu.mp3" download class="download-btn">Download</a>
-      <audio id="audio3" src="https://files.catbox.moe/0ld0yu.mp3"></audio>
-    </div>
-  </div>
-
-  <!-- Tambahkan musik lain sesuai kebutuhan -->
-  <!-- Contoh keempat -->
-  <div class="music-card">
-    <div class="music-title">HATI-HATI DIJALAN – TULUS</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio4')">▶️</button>
-      <span class="track-time" id="time4">00:00</span>
-      <input type="range" class="progress" id="progress4" value="0" max="100">
-      <a href="https://files.catbox.moe/1suqvn.m4a" download class="download-btn">Download</a>
-      <audio id="audio4" src="https://files.catbox.moe/1suqvn.m4a"></audio>
-    </div>
-  </div>
-
-  <div class="music-card">
-    <div class="music-title">BIAR AKU YANG PERGI – ALDY MALDINI</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio5')">▶️</button>
-      <span class="track-time" id="time5">00:00</span>
-      <input type="range" class="progress" id="progress5" value="0" max="100">
-      <a href="https://files.catbox.moe/8n7aro.m4a" download class="download-btn">Download</a>
-      <audio id="audio5" src="https://files.catbox.moe/8n7aro.m4a"></audio>
-    </div>
-  </div>
-
-  <div class="music-card">
-    <div class="music-title">RUMAH KE RUMAH – HINDIA</div>
-    <div class="audio-wrapper">
-      <button class="play-btn" onclick="togglePlay(this, 'audio6')">▶️</button>
-      <span class="track-time" id="time6">00:00</span>
-      <input type="range" class="progress" id="progress6" value="0" max="100">
-      <a href="https://files.catbox.moe/ohyp6w.mp3" download class="download-btn">Download</a>
-      <audio id="audio6" src="https://files.catbox.moe/ohyp6w.mp3"></audio>
-    </div>
-  </div>
+  <footer>© depanXCV 2022-2025</footer>
 
   <script>
-    const audios = document.querySelectorAll('audio');
+    const musicData = [
+      { title: "Take Me Home", url: "https://files.catbox.moe/ey41j1.mp3" },
+      { title: "Last Night On Earth", url: "https://files.catbox.moe/ylypc8.m4a" },
+      { title: "Cheap Thrills", url: "https://files.catbox.moe/vce52l.m4a" },
+      { title: "O Tuan Feast", url: "https://files.catbox.moe/wlkn8t.m4a" },
+      { title: "Lilith", url: "https://files.catbox.moe/z4t1kz.m4a" },
+      { title: "DJ Sial Mahalini Remix", url: "https://files.catbox.moe/8t8244.m4a" },
+      { title: "Tak Ingin Usai - Keisya Levronka (Sad Version)", url: "https://files.catbox.moe/kfmpsp.mp3" },
+      { title: "Ditinggal Pas Sayang Sayange", url: "https://files.catbox.moe/0ld0yu.mp3" },
+      { title: "Hati-Hati di Jalan - Tulus", url: "https://files.catbox.moe/1suqvn.m4a" },
+      { title: "Biar Aku yang Pergi - Aldy Maldini", url: "https://files.catbox.moe/8n7aro.m4a" },
+      { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" }
+    ];
 
-    function togglePlay(btn, id) {
-      audios.forEach(a => {
-        if (a.id !== id) {
-          a.pause();
-          a.currentTime = 0;
-          document.querySelector(`[onclick*="${a.id}"]`).textContent = '▶️';
-        }
-      });
+    const listContainer = document.getElementById('music-list');
 
-      const audio = document.getElementById(id);
-      const time = document.getElementById('time' + id.slice(-1));
-      const progress = document.getElementById('progress' + id.slice(-1));
+    let currentAudio = null;
+    let currentBtn = null;
+    let currentEq = null;
+
+    musicData.forEach((music, i) => {
+      const box = document.createElement('div');
+      box.className = 'music-box';
+      box.innerHTML = `
+        <div class="title">${music.title}</div>
+        <audio id="audio${i}" src="${music.url}"></audio>
+        <div class="controls">
+          <button class="btn" onclick="togglePlay(${i}, this)">▶</button>
+          <a href="${music.url}" class="btn" download>Download</a>
+        </div>
+        <div class="equalizer" id="eq${i}">
+          <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+        </div>
+      `;
+      listContainer.appendChild(box);
+    });
+
+    function togglePlay(index, btn) {
+      const audio = document.getElementById(`audio${index}`);
+      const eq = document.getElementById(`eq${index}`);
+
+      if (currentAudio && currentAudio !== audio) {
+        currentAudio.pause();
+        currentBtn.innerText = '▶';
+        currentEq.style.display = 'none';
+      }
 
       if (audio.paused) {
         audio.play();
-        btn.textContent = '⏸️';
+        btn.innerText = '⏸';
+        eq.style.display = 'flex';
+        currentAudio = audio;
+        currentBtn = btn;
+        currentEq = eq;
       } else {
         audio.pause();
-        btn.textContent = '▶️';
+        btn.innerText = '▶';
+        eq.style.display = 'none';
       }
-
-      audio.ontimeupdate = () => {
-        let mins = Math.floor(audio.currentTime / 60);
-        let secs = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
-        time.textContent = `${mins}:${secs}`;
-        progress.value = (audio.currentTime / audio.duration) * 100;
-      };
-
-      progress.oninput = () => {
-        audio.currentTime = (progress.value / 100) * audio.duration;
-      };
     }
   </script>
-
 </body>
 </html>
