@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="id">
+<!DOCTYPE html>
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -11,10 +12,14 @@
       margin: 0;
       padding: 20px;
       text-align: center;
+      overflow: hidden;
+      position: relative;
     }
+
     h1 {
       text-shadow: 0 0 10px cyan;
     }
+
     .music-box {
       background: rgba(0, 0, 0, 0.6);
       border: 2px solid cyan;
@@ -24,14 +29,17 @@
       max-width: 400px;
       box-shadow: 0 0 10px cyan;
     }
+
     .title {
       font-weight: bold;
       font-size: 1.1rem;
       margin-bottom: 8px;
     }
+
     .controls {
       margin: 10px 0;
     }
+
     .btn {
       background: cyan;
       border: none;
@@ -42,11 +50,13 @@
       cursor: pointer;
       font-weight: bold;
     }
+
     .equalizer {
       display: none;
       justify-content: center;
       margin-top: 8px;
     }
+
     .bar {
       width: 4px;
       height: 5px;
@@ -54,75 +64,100 @@
       background: cyan;
       animation: bounce 1s infinite ease-in-out;
     }
+
     .bar:nth-child(2) { animation-delay: 0.1s; }
     .bar:nth-child(3) { animation-delay: 0.2s; }
-    .bar:nth-child(4) { animation-delay: 0.3s; }@keyframes bounce {
-  0%, 100% { height: 5px; }
-  50% { height: 20px; }
-}
+    .bar:nth-child(4) { animation-delay: 0.3s; }
 
-.warning {
-  color: red;
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-top: 15px;
-  animation: shake 0.3s infinite;
-}
+    @keyframes bounce {
+      0%, 100% { height: 5px; }
+      50% { height: 20px; }
+    }
 
-@keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  20% { transform: translate(-3px, 0px) rotate(1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  40% { transform: translate(1px, -1px) rotate(1deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  60% { transform: translate(-3px, 1px) rotate(0deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  80% { transform: translate(-1px, -1px) rotate(1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
-  100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
+    footer {
+      margin-top: 40px;
+      color: cyan;
+      text-shadow: 0 0 5px cyan;
+    }
 
-footer {
-  margin-top: 40px;
-  color: cyan;
-  text-shadow: 0 0 5px cyan;
-}
+    /* Shake Animation */
+    @keyframes shake {
+      0% { transform: translate(1px, 1px); }
+      20% { transform: translate(-1px, -2px); }
+      40% { transform: translate(-3px, 0px); }
+      60% { transform: translate(3px, 2px); }
+      80% { transform: translate(1px, -1px); }
+      100% { transform: translate(1px, 2px); }
+    }
 
+    .shake {
+      animation: shake 0.1s linear infinite;
+    }
+
+    #warning {
+      font-size: 1.2rem;
+      margin-top: 10px;
+      color: red;
+      font-weight: bold;
+      display: none;
+      animation: blink 0.5s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* Falling Stars */
+    .star {
+      position: absolute;
+      top: -10px;
+      width: 2px;
+      height: 2px;
+      background: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>  <div id="music-list"></div>
-  <div id="warning" class="warning" style="display:none;">FAKKKK NGULANG MULU 😠</div>  <footer>© depanXCV 2022-2025<br>Request lagu via Telegram: <a href="https://t.me/depanSYZ" target="_blank">t.me/depanSYZ</a></footer>  <script>
+  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>
+  <div id="music-list"></div>
+  <div id="warning">FAKKK NGULANG MULU 😠</div>
+  <footer>© depanXCV 2022-2025 • Req lagu? <a href="https://t.me/depanSYZ" style="color:cyan;">t.me/depanSYZ</a></footer>
+
+  <script>
     const musicData = [
-      { title: "Take Me Home", url: "https://files.catbox.moe/ey41j1.mp3" },
-      { title: "Last Night On Earth", url: "https://files.catbox.moe/ylypc8.m4a" },
-      { title: "Cheap Thrills", url: "https://files.catbox.moe/vce52l.m4a" },
-      { title: "O Tuan Feast", url: "https://files.catbox.moe/wlkn8t.m4a" },
-      { title: "Lilith", url: "https://files.catbox.moe/z4t1kz.m4a" },
       { title: "Sial - Mahalini", url: "https://files.catbox.moe/8t8244.m4a" },
       { title: "Tak Ingin Usai - Keisya Levronka (Sad Version)", url: "https://files.catbox.moe/kfmpsp.mp3" },
       { title: "Ditinggal Pas Sayang Sayange", url: "https://files.catbox.moe/0ld0yu.mp3" },
       { title: "Hati-Hati di Jalan - Tulus", url: "https://files.catbox.moe/1suqvn.m4a" },
       { title: "Biar Aku yang Pergi - Aldy Maldini", url: "https://files.catbox.moe/8n7aro.m4a" },
       { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" },
-      { title: "NEW JEANS SUPER NATURAL", url: "https://files.catbox.moe/beeu8k.m4a" },
+      { title: "NEW JEANS - Super Natural", url: "https://files.catbox.moe/beeu8k.m4a" },
       { title: "BAHTERA CINTA", url: "https://files.catbox.moe/eyw2iv.mp3" },
-      { title: "Jump - Blackpink", url: "https://files.catbox.moe/tweiyr.m4a" }
+      { title: "Jump - BLACKPINK", url: "https://files.catbox.moe/tweiyr.m4a" }
     ];
 
     const listContainer = document.getElementById('music-list');
-    let currentAudio = null;
-    let currentBtn = null;
-    let currentEq = null;
-    let playCount = 0;
+    let currentAudio = null, currentBtn = null, currentEq = null, playCount = {};
 
     musicData.forEach((music, i) => {
       const box = document.createElement('div');
       box.className = 'music-box';
       box.innerHTML = `
         <div class="title">${music.title}</div>
-        <audio id="audio${i}" src="${music.url}" onended="playNext(${i})"></audio>
+        <audio id="audio${i}" src="${music.url}"></audio>
         <div class="controls">
           <button class="btn" onclick="togglePlay(${i}, this)">▶</button>
           <a href="${music.url}" class="btn" download>Download</a>
@@ -137,47 +172,61 @@ footer {
     function togglePlay(index, btn) {
       const audio = document.getElementById(`audio${index}`);
       const eq = document.getElementById(`eq${index}`);
+      const warning = document.getElementById('warning');
+
+      if (!playCount[index]) playCount[index] = 0;
 
       if (currentAudio && currentAudio !== audio) {
         currentAudio.pause();
+        currentAudio.currentTime = 0;
         currentBtn.innerText = '▶';
         currentEq.style.display = 'none';
-        playCount = 0;
       }
 
       if (audio.paused) {
-        if (audio.currentTime === 0) {
-          playCount++;
-          if (playCount >= 3) showWarning();
-        }
         audio.play();
         btn.innerText = '⏸';
         eq.style.display = 'flex';
         currentAudio = audio;
         currentBtn = btn;
         currentEq = eq;
+
+        playCount[index]++;
+        if (playCount[index] >= 3) {
+          warning.style.display = 'block';
+          document.body.classList.add('shake');
+          setTimeout(() => {
+            warning.style.display = 'none';
+            document.body.classList.remove('shake');
+          }, 3000);
+          playCount[index] = 0; // reset setelah marah
+        }
+
+        // Auto next track
+        audio.onended = () => {
+          let next = index + 1;
+          if (next < musicData.length) {
+            togglePlay(next, listContainer.querySelectorAll(".btn")[next * 2]);
+          }
+        };
       } else {
         audio.pause();
+        audio.currentTime = 0;
         btn.innerText = '▶';
         eq.style.display = 'none';
       }
     }
 
-    function playNext(currentIndex) {
-      const nextIndex = currentIndex + 1;
-      if (nextIndex < musicData.length) {
-        const nextAudio = document.getElementById(`audio${nextIndex}`);
-        const nextBtn = document.querySelectorAll('.btn')[nextIndex * 2];
-        togglePlay(nextIndex, nextBtn);
-      }
+    // Bintang jatuh
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(star);
+      setTimeout(() => document.body.removeChild(star), 5000);
     }
-
-    function showWarning() {
-      const warning = document.getElementById('warning');
-      warning.style.display = 'block';
-      setTimeout(() => {
-        warning.style.display = 'none';
-      }, 3000);
-    }
-  </script></body>
+    setInterval(createStar, 300);
+  </script>
+</body>
 </html>
