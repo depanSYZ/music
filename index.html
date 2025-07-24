@@ -5,17 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>DEPPP STYLE MUSIC</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
+      background: #000;
       font-family: 'Segoe UI', sans-serif;
-      background: black;
       color: cyan;
-      text-align: center;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    .background-blur {
+    body::before {
+      content: "";
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
       background: url('https://files.catbox.moe/d11c1y.jpeg') center/cover no-repeat;
@@ -23,43 +23,17 @@
       z-index: -2;
     }
 
-    .stars, .meteors {
+    canvas {
       position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0;
+      left: 0;
       z-index: -1;
-      pointer-events: none;
-    }
-
-    .star, .meteor {
-      position: absolute;
-      background: white;
-      border-radius: 50%;
-      animation: fall 5s linear infinite;
-    }
-
-    .star {
-      width: 2px;
-      height: 2px;
-    }
-
-    .meteor {
-      width: 3px;
-      height: 100px;
-      transform: rotate(45deg);
-      background: linear-gradient(45deg, white, transparent);
-      opacity: 0.5;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) translateX(0); opacity: 1; }
-      100% { transform: translateY(100vh) translateX(50vw); opacity: 0; }
     }
 
     h1 {
+      text-align: center;
       text-shadow: 0 0 10px cyan;
-      margin-top: 20px;
+      margin: 20px;
     }
 
     .music-box {
@@ -70,16 +44,13 @@
       margin: 20px auto;
       max-width: 400px;
       box-shadow: 0 0 10px cyan;
+      text-align: center;
     }
 
     .title {
       font-weight: bold;
       font-size: 1.1rem;
       margin-bottom: 8px;
-    }
-
-    .controls {
-      margin: 10px 0;
     }
 
     .btn {
@@ -106,7 +77,6 @@
       background: cyan;
       animation: bounce 1s infinite ease-in-out;
     }
-
     .bar:nth-child(2) { animation-delay: 0.1s; }
     .bar:nth-child(3) { animation-delay: 0.2s; }
     .bar:nth-child(4) { animation-delay: 0.3s; }
@@ -116,73 +86,60 @@
       50% { height: 20px; }
     }
 
-    footer {
-      margin: 40px 0 20px;
-      color: cyan;
-      text-shadow: 0 0 5px cyan;
-    }
-
-    #rage-message {
+    .warning {
       display: none;
       position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-size: 2rem;
-      color: red;
-      font-weight: bold;
-      background: rgba(0,0,0,0.8);
-      padding: 20px 30px;
+      background: rgba(255, 0, 0, 0.8);
+      color: white;
+      padding: 20px 40px;
       border-radius: 15px;
-      z-index: 9999;
-      text-shadow: 0 0 10px red;
-      animation: shake 0.5s infinite;
+      font-size: 1.5rem;
+      font-weight: bold;
+      box-shadow: 0 0 15px red;
+      z-index: 999;
+      animation: shake 0.5s;
     }
 
     @keyframes shake {
-      0% { transform: translate(-50%, -50%) rotate(1deg); }
-      25% { transform: translate(-48%, -52%) rotate(-1deg); }
-      50% { transform: translate(-50%, -50%) rotate(1deg); }
-      75% { transform: translate(-52%, -48%) rotate(-1deg); }
-      100% { transform: translate(-50%, -50%) rotate(1deg); }
+      0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+      25% { transform: translate(-50%, -50%) translateX(-10px); }
+      75% { transform: translate(-50%, -50%) translateX(10px); }
+    }
+
+    footer {
+      text-align: center;
+      color: cyan;
+      text-shadow: 0 0 5px cyan;
+      margin-top: 40px;
+      padding-bottom: 50px;
     }
   </style>
 </head>
 <body>
-  <div class="background-blur"></div>
-  <div class="stars"></div>
-  <div class="meteors"></div>
-
+  <canvas id="stars"></canvas>
   <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>
-
   <div id="music-list"></div>
-
-  <footer>
-    Request lagu via <a href="https://t.me/depanSYZ" style="color:cyan;">Telegram</a><br/>
-    © depanXCV 2022-2025
-  </footer>
-
-  <div id="rage-message">FAKKK NGULANG MULU 😠</div>
+  <div class="warning" id="warning">FAKKK NGULANG MULU 😠</div>
+  <footer>Request lagu via <a href="https://t.me/depanSYZ" style="color:cyan;">Telegram</a><br>© depanXCV 2022–2025</footer>
 
   <script>
     const musicData = [
-      { title: "DJ Sial Mahalini Remix", url: "https://files.catbox.moe/8t8244.m4a" },
-      { title: "Tak Ingin Usai - Keisya Levronka (Sad)", url: "https://files.catbox.moe/kfmpsp.mp3" },
+      { title: "Sial - Mahalini", url: "https://files.catbox.moe/8t8244.m4a" },
+      { title: "Tak Ingin Usai - Keisya Levronka (Sad Version)", url: "https://files.catbox.moe/kfmpsp.mp3" },
       { title: "Ditinggal Pas Sayang Sayange", url: "https://files.catbox.moe/0ld0yu.mp3" },
       { title: "Hati-Hati di Jalan - Tulus", url: "https://files.catbox.moe/1suqvn.m4a" },
       { title: "Biar Aku yang Pergi - Aldy Maldini", url: "https://files.catbox.moe/8n7aro.m4a" },
       { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" },
-      { title: "NEW JEANS - Super Natural", url: "https://files.catbox.moe/beeu8k.m4a" },
-      { title: "Bahtera Cinta", url: "https://files.catbox.moe/eyw2iv.mp3" },
-      { title: "Jump - Blackpink", url: "https://files.catbox.moe/tweiyr.m4a" }
+      { title: "NEW JEANS - SUPER NATURAL", url: "https://files.catbox.moe/beeu8k.m4a" },
+      { title: "BAHTERA CINTA", url: "https://files.catbox.moe/eyw2iv.mp3" },
+      { title: "JUMP - BLACKPINK", url: "https://files.catbox.moe/tweiyr.m4a" }
     ];
 
     const listContainer = document.getElementById('music-list');
-    const rage = document.getElementById('rage-message');
-    let currentAudio = null;
-    let currentBtn = null;
-    let currentEq = null;
-    let playCounts = Array(musicData.length).fill(0);
+    let currentAudio = null, currentBtn = null, currentEq = null, repeatCount = 0, lastPlayed = -1;
 
     musicData.forEach((music, i) => {
       const box = document.createElement('div');
@@ -200,12 +157,10 @@
       `;
       listContainer.appendChild(box);
 
-      const audio = document.getElementById(`audio${i}`);
+      const audio = box.querySelector('audio');
       audio.addEventListener('ended', () => {
         if (i + 1 < musicData.length) {
-          document.querySelector(`#audio${i + 1}`).play();
-          currentBtn.innerText = '▶';
-          currentEq.style.display = 'none';
+          togglePlay(i + 1, listContainer.querySelectorAll('.btn')[i * 2 + 2]); // next ▶ button
         }
       });
     });
@@ -216,23 +171,23 @@
 
       if (currentAudio && currentAudio !== audio) {
         currentAudio.pause();
-        currentAudio.currentTime = 0;
         currentBtn.innerText = '▶';
         currentEq.style.display = 'none';
       }
 
       if (audio.paused) {
-        if (audio.currentTime === 0) {
-          playCounts[index] = 1;
+        if (lastPlayed === index) {
+          repeatCount++;
         } else {
-          playCounts[index]++;
+          repeatCount = 1;
+        }
+        lastPlayed = index;
+
+        if (repeatCount >= 3) {
+          showWarning();
         }
 
-        if (playCounts[index] >= 3) {
-          rage.style.display = 'block';
-          setTimeout(() => rage.style.display = 'none', 3000);
-        }
-
+        audio.currentTime = 0;
         audio.play();
         btn.innerText = '⏸';
         eq.style.display = 'flex';
@@ -241,31 +196,62 @@
         currentEq = eq;
       } else {
         audio.pause();
-        audio.currentTime = 0;
         btn.innerText = '▶';
         eq.style.display = 'none';
       }
     }
 
-    // Generate stars & meteors
-    const starContainer = document.querySelector('.stars');
-    const meteorContainer = document.querySelector('.meteors');
+    function showWarning() {
+      const w = document.getElementById('warning');
+      w.style.display = 'block';
+      w.style.animation = 'shake 0.5s';
+      document.body.classList.add('shake');
+      setTimeout(() => {
+        w.style.display = 'none';
+      }, 3000);
+    }
+
+    // bintang jatuh
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const stars = [];
+
     for (let i = 0; i < 100; i++) {
-      const s = document.createElement('div');
-      s.className = 'star';
-      s.style.top = Math.random() * 100 + '%';
-      s.style.left = Math.random() * 100 + '%';
-      s.style.animationDuration = (2 + Math.random() * 3) + 's';
-      starContainer.appendChild(s);
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5,
+        d: Math.random() * 1
+      });
     }
-    for (let i = 0; i < 5; i++) {
-      const m = document.createElement('div');
-      m.className = 'meteor';
-      m.style.top = Math.random() * -100 + 'px';
-      m.style.left = Math.random() * 100 + '%';
-      m.style.animationDuration = (3 + Math.random() * 3) + 's';
-      meteorContainer.appendChild(m);
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "white";
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      updateStars();
     }
+
+    function updateStars() {
+      for (let i = 0; i < stars.length; i++) {
+        const s = stars[i];
+        s.y += s.d;
+        s.x -= s.d;
+        if (s.y > canvas.height || s.x < 0) {
+          s.x = Math.random() * canvas.width;
+          s.y = 0;
+        }
+      }
+    }
+
+    setInterval(drawStars, 33);
   </script>
 </body>
 </html>
