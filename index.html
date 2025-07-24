@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="id">
+<!DOCTYPE html><html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -57,40 +56,31 @@
     }
     .bar:nth-child(2) { animation-delay: 0.1s; }
     .bar:nth-child(3) { animation-delay: 0.2s; }
-    .bar:nth-child(4) { animation-delay: 0.3s; }
+    .bar:nth-child(4) { animation-delay: 0.3s; }@keyframes bounce {
+  0%, 100% { height: 5px; }
+  50% { height: 20px; }
+}
 
-    @keyframes bounce {
-      0%, 100% { height: 5px; }
-      50% { height: 20px; }
-    }
+footer {
+  margin-top: 40px;
+  color: cyan;
+  text-shadow: 0 0 5px cyan;
+}
 
-    footer {
-      margin-top: 40px;
-      color: cyan;
-      text-shadow: 0 0 5px cyan;
-    }
   </style>
 </head>
 <body>
-  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>
-
-  <div id="music-list"></div>
-
-  <footer>© depanXCV 2022-2025</footer>
-
-  <script>
+  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>  <div id="music-list"></div>  <p style="margin-top: 30px; font-weight: bold; font-size: 1.1rem;">Request lagu via Telegram: <a href="https://t.me/depanSYZ" target="_blank" style="color: cyan; text-decoration: underline;">@depanSYZ</a></p>  <footer>© depanXCV 2022-2025</footer>  <script>
     const musicData = [
-      { title: "Take Me Home", url: "https://files.catbox.moe/ey41j1.mp3" },
-      { title: "Last Night On Earth", url: "https://files.catbox.moe/ylypc8.m4a" },
-      { title: "Cheap Thrills", url: "https://files.catbox.moe/vce52l.m4a" },
-      { title: "O Tuan Feast", url: "https://files.catbox.moe/wlkn8t.m4a" },
-      { title: "Lilith", url: "https://files.catbox.moe/z4t1kz.m4a" },
       { title: "DJ Sial Mahalini Remix", url: "https://files.catbox.moe/8t8244.m4a" },
       { title: "Tak Ingin Usai - Keisya Levronka (Sad Version)", url: "https://files.catbox.moe/kfmpsp.mp3" },
       { title: "Ditinggal Pas Sayang Sayange", url: "https://files.catbox.moe/0ld0yu.mp3" },
       { title: "Hati-Hati di Jalan - Tulus", url: "https://files.catbox.moe/1suqvn.m4a" },
       { title: "Biar Aku yang Pergi - Aldy Maldini", url: "https://files.catbox.moe/8n7aro.m4a" },
-      { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" }
+      { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" },
+      { title: "NEW JEANS - Super Natural", url: "https://files.catbox.moe/beeu8k.m4a" },
+      { title: "BAHTERA CINTA", url: "https://files.catbox.moe/eyw2iv.mp3" },
+      { title: "BAON CIKADAP HALAL", url: "https://files.catbox.moe/eyw2iv.mp3" }
     ];
 
     const listContainer = document.getElementById('music-list');
@@ -104,7 +94,7 @@
       box.className = 'music-box';
       box.innerHTML = `
         <div class="title">${music.title}</div>
-        <audio id="audio${i}" src="${music.url}"></audio>
+        <audio id="audio${i}" src="${music.url}" onended="playNext(${i})"></audio>
         <div class="controls">
           <button class="btn" onclick="togglePlay(${i}, this)">▶</button>
           <a href="${music.url}" class="btn" download>Download</a>
@@ -139,6 +129,14 @@
         eq.style.display = 'none';
       }
     }
-  </script>
-</body>
+
+    function playNext(currentIndex) {
+      const nextIndex = currentIndex + 1;
+      if (nextIndex < musicData.length) {
+        const nextAudio = document.getElementById(`audio${nextIndex}`);
+        const nextBtn = document.querySelectorAll('.btn')[nextIndex * 2];
+        togglePlay(nextIndex, nextBtn);
+      }
+    }
+  </script></body>
 </html>
