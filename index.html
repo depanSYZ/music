@@ -61,6 +61,28 @@
   50% { height: 20px; }
 }
 
+.warning {
+  color: red;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 15px;
+  animation: shake 0.3s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
 footer {
   margin-top: 40px;
   color: cyan;
@@ -70,24 +92,30 @@ footer {
   </style>
 </head>
 <body>
-  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>  <div id="music-list"></div>  <p style="margin-top: 30px; font-weight: bold; font-size: 1.1rem;">Request lagu via Telegram: <a href="https://t.me/depanSYZ" target="_blank" style="color: cyan; text-decoration: underline;">@depanSYZ</a></p>  <footer>© depanXCV 2022-2025</footer>  <script>
+  <h1>🎵 DEPPP STYLE MUSIC LIST 🎵</h1>  <div id="music-list"></div>
+  <div id="warning" class="warning" style="display:none;">FAKKKK NGULANG MULU 😠</div>  <footer>© depanXCV 2022-2025<br>Request lagu via Telegram: <a href="https://t.me/depanSYZ" target="_blank">t.me/depanSYZ</a></footer>  <script>
     const musicData = [
+      { title: "Take Me Home", url: "https://files.catbox.moe/ey41j1.mp3" },
+      { title: "Last Night On Earth", url: "https://files.catbox.moe/ylypc8.m4a" },
+      { title: "Cheap Thrills", url: "https://files.catbox.moe/vce52l.m4a" },
+      { title: "O Tuan Feast", url: "https://files.catbox.moe/wlkn8t.m4a" },
+      { title: "Lilith", url: "https://files.catbox.moe/z4t1kz.m4a" },
       { title: "DJ Sial Mahalini Remix", url: "https://files.catbox.moe/8t8244.m4a" },
       { title: "Tak Ingin Usai - Keisya Levronka (Sad Version)", url: "https://files.catbox.moe/kfmpsp.mp3" },
       { title: "Ditinggal Pas Sayang Sayange", url: "https://files.catbox.moe/0ld0yu.mp3" },
       { title: "Hati-Hati di Jalan - Tulus", url: "https://files.catbox.moe/1suqvn.m4a" },
       { title: "Biar Aku yang Pergi - Aldy Maldini", url: "https://files.catbox.moe/8n7aro.m4a" },
       { title: "Rumah ke Rumah - Hindia", url: "https://files.catbox.moe/ohyp6w.mp3" },
-      { title: "NEW JEANS - Super Natural", url: "https://files.catbox.moe/beeu8k.m4a" },
+      { title: "NEW JEANS SUPER NATURAL", url: "https://files.catbox.moe/beeu8k.m4a" },
       { title: "BAHTERA CINTA", url: "https://files.catbox.moe/eyw2iv.mp3" },
-      { title: "BAON CIKADAP HALAL", url: "https://files.catbox.moe/eyw2iv.mp3" }
+      { title: "Jump - Blackpink", url: "https://files.catbox.moe/tweiyr.m4a" }
     ];
 
     const listContainer = document.getElementById('music-list');
-
     let currentAudio = null;
     let currentBtn = null;
     let currentEq = null;
+    let playCount = 0;
 
     musicData.forEach((music, i) => {
       const box = document.createElement('div');
@@ -114,9 +142,14 @@ footer {
         currentAudio.pause();
         currentBtn.innerText = '▶';
         currentEq.style.display = 'none';
+        playCount = 0;
       }
 
       if (audio.paused) {
+        if (audio.currentTime === 0) {
+          playCount++;
+          if (playCount >= 3) showWarning();
+        }
         audio.play();
         btn.innerText = '⏸';
         eq.style.display = 'flex';
@@ -137,6 +170,14 @@ footer {
         const nextBtn = document.querySelectorAll('.btn')[nextIndex * 2];
         togglePlay(nextIndex, nextBtn);
       }
+    }
+
+    function showWarning() {
+      const warning = document.getElementById('warning');
+      warning.style.display = 'block';
+      setTimeout(() => {
+        warning.style.display = 'none';
+      }, 3000);
     }
   </script></body>
 </html>
