@@ -1,98 +1,289 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DEPPP MUSIC LIST</title>
-  <style>
-    body {
-      background-color: #000;
-      color: #0ff;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      text-shadow: 0 0 10px #0ff;
-      margin-bottom: 30px;
-    }
-
-    .song {
-      background: #111;
-      border: 1px solid #0ff;
-      border-radius: 10px;
-      margin: 20px auto;
-      padding: 15px;
-      max-width: 400px;
-      box-shadow: 0 0 15px #0ff;
-    }
-
-    .song-title {
-      font-weight: bold;
-      text-shadow: 0 0 5px cyan;
-      margin-bottom: 10px;
-    }
-
-    .btn {
-      margin: 5px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      background-color: #0ff;
-      color: #000;
-      box-shadow: 0 0 10px #0ff;
-    }
-
-    .telegram {
-      display: inline-block;
-      background-color: #0088cc;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 10px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 0 15px #0088cc;
-      margin-top: 40px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Kehadiran Siswa Smk 1 Pringgasela</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7fafc;
+        }
+        .attendance-card {
+            transition: transform 0.2s;
+        }
+        .attendance-card:hover {
+            transform: translateY(-5px);
+        }
+        .present {
+            background-color: #d1fae5;
+            border-left: 4px solid #10b981;
+        }
+        .absent {
+            background-color: #fee2e2;
+            border-left: 4px solid #ef4444;
+        }
+        .late {
+            background-color: #fef3c7;
+            border-left: 4px solid #f59e0b;
+        }
+    </style>
 </head>
-<body>
-  <h1>DEPPP MUSIC LIST 🎶</h1>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-indigo-700">Sistem Kehadiran Siswa Smk 1 Pringgasela</h1>
+            <p class="text-gray-600 mt-2">Pantau dan kelola kehadiran siswa dengan mudah</p>
+        </header>
 
-  <div class="song">
-    <div class="song-title">NEW JEANS - SUPER NATURAL</div>
-    <audio controls src="https://files.catbox.moe/beeu8k.m4a"></audio>
-  </div>
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-800">Daftar Kehadiran Hari Ini</h2>
+                <div class="mt-4 md:mt-0">
+                    <input type="date" class="px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    <button class="ml-2 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Filter</button>
+                </div>
+            </div>
 
-  <div class="song">
-    <div class="song-title">BAHTERA CINTA</div>
-    <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-  </div>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white">
+                    <thead>
+                        <tr class="bg-gray-100 text-gray-700">
+                            <th class="py-3 px-4 text-left">No</th>
+                            <th class="py-3 px-4 text-left">Nama Siswa</th>
+                            <th class="py-3 px-4 text-left">Kelas</th>
+                            <th class="py-3 px-4 text-left">Status</th>
+                            <th class="py-3 px-4 text-left">Waktu</th>
+                            <th class="py-3 px-4 text-left">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                         <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">1</td>
+                            <td class="py-3 px-4 font-medium">Abdul qodir jaelani</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">08:00</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">2</td>
+                            <td class="py-3 px-4 font-medium">Ardianto</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">08:15</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">3</td>
+                            <td class="py-3 px-4 font-medium">Ahmad afandi</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">4</td>
+                            <td class="py-3 px-4 font-medium">Alqi</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">5</td>
+                            <td class="py-3 px-4 font-medium">Damar tsani mahendra</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">6</td>
+                            <td class="py-3 px-4 font-medium">M.bahtiar</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">7</td>
+                            <td class="py-3 px-4 font-medium">Ahmad zaenul alpin</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">8</td>
+                            <td class="py-3 px-4 font-medium">Iza fatul hairo</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">9</td>
+                            <td class="py-3 px-4 font-medium">Rizky pratama</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">10</td>
+                            <td class="py-3 px-4 font-medium">Nabiatul trisna</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">11</td>
+                            <td class="py-3 px-4 font-medium">Widia despia</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                        <tr class="border-t hover:bg-gray-50">
+                            <td class="py-3 px-4">12</td>
+                            <td class="py-3 px-4 font-medium">Yayan</td>
+                            <td class="py-3 px-4">XI RPL</td>
+                            <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">Hadir</span></td>
+                            <td class="py-3 px-4">-</td>
+                            <td class="py-3 px-4">
+                                <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                                <button class="text-red-600 hover:text-red-800">Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-  <div class="song">
-    <div class="song-title">BAON CIKADAP HALAL</div>
-    <audio controls src="https://files.catbox.moe/eyw2iv.mp3"></audio>
-  </div>
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6">Tambah Kehadiran Baru</h2>
+            <form>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label class="block text-gray-700 mb-2">Nama Siswa</label>
+                        <input type="text" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Kelas</label>
+                        <select class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option>XI RPL</option>
+                            <option>XI TKJ</option>
+                            <option>XI AT</option>
+                            <option>XI APHP</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Status</label>
+                        <select class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option>Hadir</option>
+                            <option>Terlambat</option>
+                            <option>Absen</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 mb-2">Waktu</label>
+                        <input type="time" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                    </div>
+                </div>
+                <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">Simpan Kehadiran</button>
+            </form>
+        </div>
+    </div>
 
-  <div class="song">
-    <div class="song-title">LAGU SAD 1</div>
-    <audio controls src="https://files.catbox.moe/r6qfl3.mp3"></audio>
-  </div>
-
-  <div class="song">
-    <div class="song-title">LAGU SAD 2</div>
-    <audio controls src="https://files.catbox.moe/swouhp.mp3"></audio>
-  </div>
-
-  <div class="song">
-    <div class="song-title">LAGU SAD 3</div>
-    <audio controls src="https://files.catbox.moe/ez93d3.mp3"></audio>
-  </div>
-
-  <a class="telegram" href="https://t.me/depanSYZ" target="_blank">Request Lagu? Klik Di Sini</a>
+    <script>
+        // Fungsi untuk menambahkan data kehadiran baru
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Ambil nilai dari form
+            const nama = this.querySelector('input[type="text"]').value;
+            const kelas = this.querySelector('select').value;
+            const status = this.querySelectorAll('select')[1].value;
+            const waktu = this.querySelector('input[type="time"]').value;
+            
+            // Buat elemen baris baru untuk tabel
+            const tableBody = document.querySelector('tbody');
+            const newRow = document.createElement('tr');
+            newRow.className = 'border-t hover:bg-gray-50';
+            
+            // Tentukan kelas CSS berdasarkan status
+            let statusClass = '';
+            let statusText = '';
+            if (status === 'Hadir') {
+                statusClass = 'bg-green-100 text-green-800';
+                statusText = 'Hadir';
+            } else if (status === 'Terlambat') {
+                statusClass = 'bg-yellow-100 text-yellow-800';
+                statusText = 'Terlambat';
+            } else {
+                statusClass = 'bg-red-100 text-red-800';
+                statusText = 'Absen';
+            }
+            
+            // Isi konten baris baru
+            newRow.innerHTML = `
+                <td class="py-3 px-4">${tableBody.children.length + 1}</td>
+                <td class="py-3 px-4 font-mediium">${nama}</td>
+                <td class="py-3 px-4">${kelas}</td>
+                <td class="py-3 px-4"><span class="px-2 py-1 rounded-full text-xs ${statusClass}">${statusText}</span></td>
+                <td class="py-3 px-4">${status === 'Absen' ? '-' : waktu}</td>
+                <td class="py-3 px-4">
+                    <button class="text-indigo-600 hover:text-indigo-800 mr-2">Edit</button>
+                    <button class="text-red-600 hover:text-red-800">Hapus</button>
+                </td>
+            `;
+            
+            // Tambahkan baris ke tabel
+            tableBody.appendChild(newRow);
+            
+            // Reset form
+            this.reset();
+            
+            // Tampilkan notifikasi
+            alert('Data kehadiran berhasil ditambahkan!');
+        });
+    </script>
 </body>
 </html>
+
